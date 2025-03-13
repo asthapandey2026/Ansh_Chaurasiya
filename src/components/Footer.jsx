@@ -1,81 +1,85 @@
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaFacebook, FaInstagram, FaLinkedin, FaGithub, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const Footer = () => {
+  const smoothScroll = (e, id) => {
+    e.preventDefault();
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+
   return (
-    <footer className="bg-gray-900 text-gray-300">
-      <div className="max-w-7xl mx-auto px-4 py-12">
+    <footer className="bg-gray-900 text-gray-300 py-12">
+      <div className="max-w-7xl mx-auto px-6">
+        
+        {/* Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Company Info */}
+          
+          {/* Brand Info */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-4">Bare and Best</h3>
-            <p className="text-sm">
-              Your trusted online pharmacy for all your healthcare needs. We provide quality medicines and healthcare products.
+            <h3 className="text-3xl font-bold text-white mb-4">Ansh Chaurasiya</h3>
+            <p className="text-sm text-gray-400">
+              Passionate about AI, ML, and web development. Dedicated to building innovative solutions that bridge technology with real-world applications.
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
-              <li><a href="/products" className="hover:text-blue-400 transition-colors">Products</a></li>
-              <li><a href="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-blue-400 transition-colors">Terms & Conditions</a></li>
+            <h4 className="text-lg font-semibold text-white mb-4  pb-2 inline-block">Quick Links</h4>
+            <ul className="space-y-3">
+              <li><a href="#projects" className="hover:text-blue-400 transition-all" onClick={(e) => smoothScroll(e, "projects")}>Projects</a></li>
+              <li><a href="/about" className="hover:text-blue-400 transition-all">About Me</a></li>
+              <li><a href="/" className="hover:text-blue-400 transition-all">Home</a></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Contact Us</h4>
-            <div className="space-y-3">
+            <h4 className="text-lg font-semibold text-white mb-4  pb-2 inline-block">Contact</h4>
+            <div className="space-y-4 text-sm">
               <div className="flex items-center space-x-3">
                 <FaPhone className="text-blue-400" />
-                <span>+1 234 567 890</span>
+                <span>+91 7985530689</span>
               </div>
               <div className="flex items-center space-x-3">
                 <FaEnvelope className="text-blue-400" />
-                <span>support@Bare and Best.com</span>
+                <a href="mailto:chaurasiaansh968@gmail.com" className="hover:text-blue-400">chaurasiaansh968@gmail.com</a>
               </div>
               <div className="flex items-center space-x-3">
                 <FaMapMarkerAlt className="text-blue-400" />
-                <span>123 Pharmacy Street, Health City</span>
+                <span>Jhansi, Uttar Pradesh, India</span>
               </div>
             </div>
           </div>
 
-          {/* Newsletter */}
+          {/* Social Links */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-4">Newsletter</h4>
-            <div className="space-y-4">
-              <p className="text-sm">Subscribe to our newsletter for updates and exclusive offers.</p>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-4 py-2 rounded-l-md focus:outline-none text-gray-900"
-                />
-                <button className="bg-blue-500 px-4 py-2 rounded-r-md hover:bg-blue-600 transition-colors">
-                  Subscribe
-                </button>
-              </div>
+            <h4 className="text-lg font-semibold text-white mb-4 pb-2 inline-block">Connect with Me</h4>
+            <div className="flex space-x-4 mt-3">
+              <a href="https://www.facebook.com/profile.php?id=61573108866620" className="hover:text-blue-400 transition-all">
+                <FaFacebook size={24} />
+              </a>
+              <a href="https://www.instagram.com/anshhchaurasiya?igsh=MWpqbTloN3E1N3Rj" className="hover:text-blue-400 transition-all">
+                <FaInstagram size={24} />
+              </a>
+              <a href="https://www.linkedin.com/in/ansh-chaurasia-6a437925a" className="hover:text-blue-400 transition-all">
+                <FaLinkedin size={24} />
+              </a>
+              <a href="https://github.com/chaurasiaansh" className="hover:text-blue-400 transition-all">
+                <FaGithub size={24} />
+              </a>
             </div>
           </div>
+
         </div>
 
-        {/* Social Media & Copyright */}
-        <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex space-x-6 mb-4 md:mb-0">
-              <a href="#" className="hover:text-blue-400 transition-colors"><FaFacebook size={20} /></a>
-              <a href="#" className="hover:text-blue-400 transition-colors"><FaTwitter size={20} /></a>
-              <a href="#" className="hover:text-blue-400 transition-colors"><FaInstagram size={20} /></a>
-              <a href="#" className="hover:text-blue-400 transition-colors"><FaLinkedin size={20} /></a>
-            </div>
-            <div className="text-sm text-gray-400">
-              © {new Date().getFullYear()} Bare and Best. All rights reserved.
-            </div>
-          </div>
+        {/* Gradient Divider */}
+        <div className="h-[2px] bg-gradient-to-r from-transparent via-blue-900 to-transparent my-8"></div>
+
+        {/* Copyright & Socials */}
+        <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+          <p>© {new Date().getFullYear()} Ansh Chaurasiya. All Rights Reserved.</p>
         </div>
+
       </div>
     </footer>
   );

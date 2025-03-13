@@ -1,82 +1,166 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import React, { useRef, useState } from "react";
+import ProjectCard from "./ProjectCard";
+import emailjs from '@emailjs/browser';
+import EyeTracker from "./EyeTracker";
 
-function Home() {
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
-  const location = useLocation();
+const Home = () => {
+  const [selectedCert, setSelectedCert] = useState(null);
 
-  const fetchUserProfile = async () => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      setLoading(false);
-      setUserData(null);
-      return;
+  const projects = [         //if any new projects...add here
+    {
+      title: "MCQs Generator Using NLP and Flask",
+      description: "A multiple-choice question generator using NLP, integrated with LLMs for better content quality, and built with Flask.",
+      link: "https://github.com/chaurasiaansh/Quiz-genrator"
+    },
+    {
+      title: "Personal Finance Planner",
+      description: "A Python-based finance management tool with an FD calculator, retirement planner, tax calculator, and financial strategies.",
+      link: "https://personal-finance-project-zjayyxbpsbcsdhtezw94ag.streamlit.app"
+    },
+    {
+      title: "Analysis Using Excel and Power BI",
+      description: "Analyzed Blinkit's sales data, created profit and sales visualizations, and designed dashboards for automated reporting.",
+      link: "#"
     }
+  ];
 
-    try {
-      const response = await fetch(import.meta.env.VITE_SERVER_URL + '/users/profile', {
-        headers: {
-          'Authorization': `Bearer ${token}`,
-          'Content-Type': 'application/json'
-        }
-      });
+  const certifications = [       //if any new certificates...add here
+    { title: "NPTEL Python for Data Science", image: "/nptel.png", description: "Earned Silver Elite in Python for Data Science." },
+    { title: "Scaler Python Course", image: "/scaler.png", description: "Completed Python Course for Beginners with Certification." },
+    { title: "Database Management System", image: "/infosys.png", description: "Completed DBMS Course from Infosys Springboard with Certification." },
+  ];
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+  const skills = [               //want to add skills..add here
+    "Machine Learning", "NLP",
+    "Excel", "SQL", 
+    "Python", "HTML", "CSS",
+    "NumPy", "Pandas", "Matplotlib", "Seaborn",
+    "Power BI",
+    "SQL", "relational databases"
+  ];
 
-      const data = await response.json();
-      // console.log('Profile data:', data);
-      setUserData(data);
-    } catch (error) {
-      console.error('Error fetching profile:', error);
-      setUserData(null);
-      if (error.message.includes('401')) {
-        localStorage.removeItem('token');
-      }
-    } finally {
-      setLoading(false);
-    }
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+    emailjs.sendForm(
+      import.meta.env.VITE_SERVICE_ID,
+      import.meta.env.VITE_TEMPLATE_ID,
+      form.current,
+      { publicKey: import.meta.env.VITE_PUBLIC_KEY }
+    )
+
+      .then(() => console.log('SUCCESS!'))
+      .catch((error) => console.log('FAILED...', error.text));
   };
 
-  useEffect(() => {
-    // Fetch profile whenever component mounts or location changes
-    fetchUserProfile();
-  }, [location.key]); // This will re-run when navigation occurs
+  const smoothScroll = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div className="min-h-screen pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl font-bold text-center my-8">Welcome to Bare and Best</h1>
-        
-        {loading ? (
-          <div className="text-center">Loading...</div>
-        ) : userData ? (
-          <div className="bg-white shadow rounded-lg p-6 mt-4">
-            <h2 className="text-2xl font-semibold mb-4">Welcome, {userData.data.user.name.firstName}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div>
-                <p className="text-gray-600">Email: {userData.data.user.email}</p>
-                <p className="text-gray-600">Role: {userData.data.user.role}</p>
-              </div>
-            </div>
-          </div>
-        ) : (
-          <div className="text-center">
-            <p className="text-gray-600 mb-4">Please log in to view your profile</p>
-            <Link 
-              to="/login" 
-              className="inline-block bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600"
-            >
-              Login
-            </Link>
-          </div>
-        )}
+    <>
+      {/* Intro Section */}
+      <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white h-screen flex items-center justify-center flex-col text-center">
+        <EyeTracker/>
+        <h1 className="text-5xl font-bold">
+          Hi, I'm <span className="text-blue-400">Ansh Chaurasiya</span>
+        </h1>
+        <p className="text-lg mt-4 max-w-lg">
+          Aspiring Machine Learning & AI Enthusiast | Web Developer | CSE-AIML Student
+        </p>
+        <div className="mt-6">
+          <button onClick={() => smoothScroll('projects')} className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium shadow-lg transition-transform transform hover:scale-105">View Projects</button>
+          <button onClick={() => smoothScroll('contact')} className="ml-4 border-2 border-blue-400 hover:bg-blue-400 text-white px-6 py-3 rounded-lg text-lg font-medium shadow-lg transition-transform transform hover:scale-105">Contact Me</button>
+        </div>
       </div>
-    </div>
+
+      {/* About Section */}
+      <div className="bg-blue-50 py-16 px-6 md:px-20 flex flex-col md:flex-row items-center" id="about">
+        <img src="/profile-pic ansh.png" alt="Ansh Chaurasiya" className="w-60 h-60 rounded-full border-4 border-blue-900 shadow-lg" />
+        <div className="md:ml-10 mt-6 md:mt-0 text-center md:text-left">
+          <h2 className="text-4xl font-bold text-blue-900">Ansh Chaurasiya</h2>
+          <p className="mt-4 text-gray-800 max-w-2xl">
+            Passionate Python coder, web developer, and AIML student at Lakshmi Narain College of Technology Excellence.
+            Dedicated to building innovative solutions that bridge the gap between technology and real-world applications.
+          </p>
+          <ul className="mt-2 text-gray-800 max-w-2xl">
+            <li>🌱 I’m currently learning Python, Web Development, and Django.</li>
+            <li>📫 How to reach me: <a href="mailto:chaurasiaansh968@gmail.com" className="text-gray-500">chaurasiaansh968@gmail.com</a></li>
+            <li>⚡ Fun fact: My interest doubles when I solve errors in that language!</li>
+          </ul>
+          <p className="mt-2 text-gray-800 max-w-2xl">
+            <span className="font-semibold">Languages & Tools:</span> Python, Django, HTML5, CSS3, MySQL
+          </p>
+        </div>
+      </div>
+
+
+      {/* Projects Section */}
+      <div className="bg-white py-16 px-6 md:px-20" id="projects">
+        <h2 className="text-4xl font-bold text-blue-900 text-center">Projects</h2>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} title={project.title} description={project.description} link={project.link} />
+          ))}
+        </div>
+      </div>
+
+      {/* Certifications Section */}
+      <div className="bg-gray-100 py-16 px-6 md:px-20" id="certifications">
+        <h2 className="text-4xl font-bold text-blue-900 text-center">Certifications</h2>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+          {certifications.map((cert, index) => (
+            <div key={index} onClick={() => setSelectedCert(cert)}  className="relative bg-white w-100 shadow-lg rounded-lg overflow-hidden p-4 text-center transform transition-transform hover:scale-105">
+              <img src={cert.image} alt={cert.title} className="w-full h-60 object-cover" />
+              <h3 className="text-lg font-bold mt-4">{cert.title}</h3>
+              <p className="text-gray-700 text-sm">{cert.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      {/* Certificate Enlargement */}
+      {selectedCert && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" onClick={() => setSelectedCert(null)}>
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg text-center relative">
+            <button 
+              className="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full"
+              onClick={() => setSelectedCert(null)}
+            >
+              X
+            </button>
+            <img src={selectedCert.image} alt={selectedCert.title} className="w-full h-auto" />
+            <h3 className="text-xl font-bold mt-4">{selectedCert.title}</h3>
+            <p className="text-gray-700 text-sm mt-2">{selectedCert.description}</p>
+          </div>
+        </div>)}
+
+
+      {/* Skills Section */}
+      <div className="bg-blue-900 text-white py-16 px-6 md:px-20" id="skills">
+        <h2 className="text-4xl font-bold text-center">Skills</h2>
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          {skills.map((skill, index) => (
+            <div key={index} className="p-4 bg-blue-700 text-white rounded-lg shadow-lg transform transition-transform hover:scale-105">
+              {skill}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Contact Section */}
+      <div className="bg-gray-800 text-white py-16 px-6 md:px-20 text-center" id="contact">
+        <h2 className="text-4xl font-bold text-white">Contact Me</h2>
+        <form ref={form} onSubmit={sendEmail} className="mt-6 max-w-lg mx-auto space-y-4">
+          <input type="text" name="name" placeholder="Your Name" required className="w-full p-3 border border-gray-600 rounded-lg bg-gray-700 text-white" />
+          <input type="email" name="email" placeholder="Your Email" required className="w-full p-3 border border-gray-600 rounded-lg bg-gray-700 text-white" />
+          <input type="number" name="phone" placeholder="Your Contact" className="w-full p-3 border border-gray-600 rounded-lg bg-gray-700 text-white" />
+          <textarea name="message" placeholder="Your Message" required className="w-full p-3 border border-gray-600 rounded-lg bg-gray-700 text-white"></textarea>
+          <button type="submit" className="w-full bg-blue-500 hover:bg-blue-600 text-white py-3 rounded-lg text-lg font-medium">Send</button>
+        </form>
+      </div>
+    </>
   );
-}
+};
 
 export default Home;
