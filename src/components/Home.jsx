@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import ProjectCard from "./ProjectCard";
 import emailjs from '@emailjs/browser';
 import EyeTracker from "./EyeTracker";
+import About from "./About";
 
 const Home = () => {
   const [selectedCert, setSelectedCert] = useState(null);
@@ -77,22 +78,7 @@ const Home = () => {
 
       {/* About Section */}
       <div className="bg-blue-50 py-16 px-6 md:px-20 flex flex-col md:flex-row items-center" id="about">
-        <img src="/profile-pic ansh.png" alt="Ansh Chaurasiya" className="w-60 h-60 rounded-full border-4 border-blue-900 shadow-lg" />
-        <div className="md:ml-10 mt-6 md:mt-0 text-center md:text-left">
-          <h2 className="text-4xl font-bold text-blue-900">Ansh Chaurasiya</h2>
-          <p className="mt-4 text-gray-800 max-w-2xl">
-            Passionate Python coder, web developer, and AIML student at Lakshmi Narain College of Technology Excellence.
-            Dedicated to building innovative solutions that bridge the gap between technology and real-world applications.
-          </p>
-          <ul className="mt-2 text-gray-800 max-w-2xl">
-            <li>🌱 I’m currently learning Python, Web Development, and Django.</li>
-            <li>📫 How to reach me: <a href="mailto:chaurasiaansh968@gmail.com" className="text-gray-500">chaurasiaansh968@gmail.com</a></li>
-            <li>⚡ Fun fact: My interest doubles when I solve errors in that language!</li>
-          </ul>
-          <p className="mt-2 text-gray-800 max-w-2xl">
-            <span className="font-semibold">Languages & Tools:</span> Python, Django, HTML5, CSS3, MySQL
-          </p>
-        </div>
+        <About/>
       </div>
 
 

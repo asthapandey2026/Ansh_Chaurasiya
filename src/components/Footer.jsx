@@ -10,10 +10,10 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-gray-300 py-12">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Footer Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          
+
           {/* Brand Info */}
           <div>
             <h3 className="text-3xl font-bold text-white mb-4">Ansh Chaurasiya</h3>
@@ -27,7 +27,7 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white mb-4  pb-2 inline-block">Quick Links</h4>
             <ul className="space-y-3">
               <li><a href="#projects" className="hover:text-blue-400 transition-all" onClick={(e) => smoothScroll(e, "projects")}>Projects</a></li>
-              <li><a href="/about" className="hover:text-blue-400 transition-all">About Me</a></li>
+              <li><a href="#about" className="hover:text-blue-400" onClick={(e) => smoothScroll(e, "about")}>About</a></li>
               <li><a href="/" className="hover:text-blue-400 transition-all">Home</a></li>
             </ul>
           </div>

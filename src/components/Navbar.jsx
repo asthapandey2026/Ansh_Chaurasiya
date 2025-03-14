@@ -23,7 +23,7 @@ const Navbar = () => {
             </a>
           </li>
           <li>
-            <a href="/about" className="hover:text-blue-400" >
+            <a href="#about" className="hover:text-blue-400" onClick={(e) => smoothScroll(e, "about")}>
               About
             </a>
           </li>
