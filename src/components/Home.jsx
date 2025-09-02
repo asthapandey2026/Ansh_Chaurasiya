@@ -21,7 +21,7 @@ const Home = () => {
     {
       title: "Analysis Using Excel and Power BI",
       description: "Analyzed Blinkit's sales data, created profit and sales visualizations, and designed dashboards for automated reporting.",
-      link: "#"
+      link: "https://github.com/chaurasiaansh/powerbi.git"
     }
   ];
 
