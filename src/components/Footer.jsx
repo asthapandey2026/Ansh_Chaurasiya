@@ -55,16 +55,16 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold text-white mb-4 pb-2 inline-block">Connect with Me</h4>
             <div className="flex space-x-4 mt-3">
-              <a href="https://www.facebook.com/profile.php?id=61573108866620" className="hover:text-blue-400 transition-all">
+              <a href="https://www.facebook.com/profile.php?id=61573108866620" className="hover:text-blue-400 transition-all" target="_blank">
                 <FaFacebook size={24} />
               </a>
-              <a href="https://www.instagram.com/anshhchaurasiya?igsh=MWpqbTloN3E1N3Rj" className="hover:text-blue-400 transition-all">
+              <a href="https://www.instagram.com/anshhchaurasiya?igsh=MWpqbTloN3E1N3Rj" className="hover:text-blue-400 transition-all" target="_blank">
                 <FaInstagram size={24} />
               </a>
-              <a href="https://www.linkedin.com/in/ansh-chaurasia-6a437925a" className="hover:text-blue-400 transition-all">
+              <a href="https://www.linkedin.com/in/ansh-chaurasia-6a437925a" className="hover:text-blue-400 transition-all" target="_blank">
                 <FaLinkedin size={24} />
               </a>
-              <a href="https://github.com/chaurasiaansh" className="hover:text-blue-400 transition-all">
+              <a href="https://github.com/chaurasiaansh" className="hover:text-blue-400 transition-all" target="_blank">
                 <FaGithub size={24} />
               </a>
             </div>
