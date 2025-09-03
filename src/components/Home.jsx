@@ -33,7 +33,7 @@ const Home = () => {
 
   const skills = [               //want to add skills..add here
     "Machine Learning", "NLP",
-    "Excel", "SQL", 
+    "Excel", "SQL",
     "Python", "HTML", "CSS",
     "NumPy", "Pandas", "Matplotlib", "Seaborn",
     "Power BI",
@@ -59,16 +59,18 @@ const Home = () => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
 
+
+
   return (
     <>
       {/* Intro Section */}
       <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white h-screen flex items-center justify-center flex-col text-center">
-        <EyeTracker/>
+        <EyeTracker />
         <h1 className="text-5xl font-bold">
           Hi, I'm <span className="text-blue-400">Ansh Chaurasiya</span>
         </h1>
         <p className="text-lg mt-4 max-w-lg">
-          Aspiring Machine Learning & AI Enthusiast | Web Developer | CSE-AIML Student
+          Aspiring Machine Learning & AI Enthusiast | Data Analyst | CSE-AIML Student
         </p>
         <div className="mt-6">
           <button onClick={() => smoothScroll('projects')} className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg text-lg font-medium shadow-lg transition-transform transform hover:scale-105">View Projects</button>
@@ -77,8 +79,8 @@ const Home = () => {
       </div>
 
       {/* About Section */}
-      <div className="bg-blue-50 py-16 px-6 md:px-20 flex flex-col md:flex-row items-center" id="about">
-        <About/>
+      <div className="bg-blue-50 py-16 px-6 md:px-20 flex justify-center items-center" id="about">
+        <About />
       </div>
 
 
@@ -92,34 +94,56 @@ const Home = () => {
         </div>
       </div>
 
+
+
       {/* Certifications Section */}
       <div className="bg-gray-100 py-16 px-6 md:px-20" id="certifications">
         <h2 className="text-4xl font-bold text-blue-900 text-center">Certifications</h2>
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-8 justify-center">
           {certifications.map((cert, index) => (
-            <div key={index} onClick={() => setSelectedCert(cert)}  className="relative bg-white w-100 shadow-lg rounded-lg overflow-hidden p-4 text-center transform transition-transform hover:scale-105">
-              <img src={cert.image} alt={cert.title} className="w-full h-60 object-cover" />
+            <div
+              key={index}
+              onClick={() => setSelectedCert(cert)}
+              className="relative bg-white w-full max-w-sm shadow-lg rounded-lg overflow-hidden 
+                   p-4 text-center transform transition-transform hover:scale-105 mx-auto"
+            >
+              <img
+                src={cert.image}
+                alt={cert.title}
+                className="w-full h-40 md:h-60 object-cover rounded-md"
+              />
               <h3 className="text-lg font-bold mt-4">{cert.title}</h3>
               <p className="text-gray-700 text-sm">{cert.description}</p>
             </div>
           ))}
         </div>
       </div>
+
       {/* Certificate Enlargement */}
       {selectedCert && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50" onClick={() => setSelectedCert(null)}>
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg text-center relative">
-            <button 
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+          onClick={() => setSelectedCert(null)}
+        >
+          <div className="bg-white p-4 md:p-6 rounded-lg shadow-lg max-w-xs md:max-w-lg w-full text-center relative">
+            <button
               className="absolute top-2 right-2 bg-red-500 text-white px-3 py-1 rounded-full"
               onClick={() => setSelectedCert(null)}
             >
               X
             </button>
-            <img src={selectedCert.image} alt={selectedCert.title} className="w-full h-auto" />
-            <h3 className="text-xl font-bold mt-4">{selectedCert.title}</h3>
+            <img
+              src={selectedCert.image}
+              alt={selectedCert.title}
+              className="w-full h-auto max-h-[60vh] object-contain"
+            />
+            <h3 className="text-lg md:text-xl font-bold mt-4">{selectedCert.title}</h3>
             <p className="text-gray-700 text-sm mt-2">{selectedCert.description}</p>
           </div>
-        </div>)}
+        </div>
+      )}
+
 
 
       {/* Skills Section */}
