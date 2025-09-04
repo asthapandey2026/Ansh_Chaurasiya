@@ -18,7 +18,7 @@ const Footer = () => {
           <div>
             <h3 className="text-3xl font-bold text-white mb-4">Ansh Chaurasiya</h3>
             <p className="text-sm text-gray-400">
-              Passionate about AI, ML, and web development. Dedicated to building innovative solutions that bridge technology with real-world applications.
+              Passionate about AI, ML and Data Analytics. Dedicated to building innovative solutions that bridge technology with real-world applications.
             </p>
           </div>
 
@@ -69,14 +69,13 @@ const Footer = () => {
               </a>
             </div>
           </div>
-
         </div>
 
         {/* Gradient Divider */}
         <div className="h-[2px] bg-gradient-to-r from-transparent via-blue-900 to-transparent my-8"></div>
 
         {/* Copyright & Socials */}
-        <div className="flex flex-col md:flex-row justify-between items-center text-gray-400 text-sm">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-3 text-gray-400 text-sm">
           <p>© {new Date().getFullYear()} Ansh Chaurasiya. All Rights Reserved.</p>
         </div>
 
