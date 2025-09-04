@@ -51,8 +51,8 @@ const Navbar = () => {
       </nav>
 
       {/* Mobile Top Navbar (Only Portfolio Name) */}
-      <nav className="bg-gray-800 text-white py-3 px-6 fixed w-full top-0 shadow-md z-50 flex justify-center sm:hidden">
-        <h1 className="text-xl font-bold text-blue-50">Ansh Chaurasiya</h1>
+      <nav className="bg-gray-800 text-white py-3 px-6 fixed w-full top-0 shadow-md z-50 flex sm:hidden">
+        <h1 className="text-xl font-bold text-blue-50">Portfolio</h1>
       </nav>
 
       {/* Mobile Bottom Navbar */}
