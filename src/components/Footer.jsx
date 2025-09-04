@@ -64,7 +64,7 @@ const Footer = () => {
               <a href="https://www.linkedin.com/in/ansh-chaurasia-6a437925a" className="hover:text-blue-400 transition-all" target="_blank">
                 <FaLinkedin size={24} />
               </a>
-              <a href="https://github.com/chaurasiaansh" className="hover:text-blue-400 transition-all" target="_blank">
+              <a href="https://github.com/anshhchaurasiya" className="hover:text-blue-400 transition-all" target="_blank">
                 <FaGithub size={24} />
               </a>
             </div>

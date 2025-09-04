@@ -79,7 +79,7 @@ const About = () => {
                       icon: <FaLinkedin className="inline-block mr-1 sm:mr-2 text-blue-700 text-sm sm:text-base" />,
                     },
                     {
-                      href: "https://github.com/chaurasiaansh",
+                      href: "https://github.com/anshhchaurasiya",
                       text: "GitHub",
                       icon: <FaGithub className="inline-block mr-1 sm:mr-2 text-gray-800 text-sm sm:text-base" />,
                     },
